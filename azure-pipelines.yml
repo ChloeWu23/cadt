@@ -21,7 +21,16 @@ stages:
           #       echo $code_version_out
           #       echo $code_version
         steps:
-        
+            - task: DownloadSecureFile@1
+              name: secureConfig
+              inputs:
+                secureFile: 'config.yaml'
+            
+            - script: cp $(secureConfig.secureFilePath) ./config.yaml
+              displayName: 'Copy secure config to current directory'
+            
+            
+
             - task: Docker@2 # Pushing the Docker Image inside the Container Registry
               inputs:
                 containerRegistry: "sandboxcadtACRdev" # Adding Container Registry Name
@@ -64,4 +73,6 @@ stages:
                 waitForExecution: true
                 # arguments: --install
                 # arguments: "--set image.tag=$(code_version_out)_$(Build.BuildId)"
+           
+
             
