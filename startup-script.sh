@@ -25,8 +25,11 @@ chia init --fix-ssl-permissions
 
 
 # Run expect script to automate chia keys generate
-expect /expect_chia_keys_generate.exp
+#expect /expect_chia_keys_generate.exp
 
+# Generate Chia keys
+echo "generate chia keys"
+echo "" | chia keys generate
 
 #setting testnet to be true
 echo "setting testnet"

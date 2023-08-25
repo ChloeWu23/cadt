@@ -49,11 +49,11 @@ RUN curl -sL https://repo.chia.net/FD39E6D3.pubkey.asc | sudo gpg --dearmor -o /
 COPY config.yaml /root/.chia/mainnet/cadt/v1/config.yaml
 # Copy startup script and expect script from host to Docker container
 COPY startup-script.sh /startup-script.sh
-COPY expect_chia_keys_generate.exp /expect_chia_keys_generate.exp
+#COPY expect_chia_keys_generate.exp /expect_chia_keys_generate.exp
 
 # Set execute permissions
 RUN chmod +x /startup-script.sh
-RUN chmod +x /expect_chia_keys_generate.exp
+#RUN chmod +x /expect_chia_keys_generate.exp
 
 
 # Expose CADT port
