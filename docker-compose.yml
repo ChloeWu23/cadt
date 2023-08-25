@@ -4,7 +4,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    image: cadt-api-develop:latest
+    image: cadt-api-develop:latest   
     ports:
       - "31310:31310"
     volumes:
@@ -13,3 +13,7 @@ services:
       - CW_PORT=31310
       - BIND_ADDRESS=0.0.0.0
 
+networks:
+  your-network:
+    driver: bridge
+    enable_ipv6: false
