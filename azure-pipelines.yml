@@ -55,7 +55,7 @@ stages:
                 azureResourceGroup: "sandbox-cadt-dev-northeurope-rg-master"
                 kubernetesCluster: "sandbox-cadt-aks-dev-master"
                 namespace: "develop"
-                command: "upgrade"
+                command: "install"
                 chartType: "FilePath"
                 chartPath: "cadt-backend-helm"
                 chartVersion: "1.0"
