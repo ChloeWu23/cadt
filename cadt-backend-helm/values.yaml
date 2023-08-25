@@ -9,7 +9,7 @@ image:
   name: cadt-api-develop #imagename
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.6.1_1985"
+  tag: "1.0.0"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -38,7 +38,7 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
   port: 31310
 
 ingress:
