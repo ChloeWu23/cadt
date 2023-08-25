@@ -45,9 +45,14 @@ RUN curl -sL https://repo.chia.net/FD39E6D3.pubkey.asc | sudo gpg --dearmor -o /
     apt-get update && \
     apt-get install cadt
 
-# Copy startup script from host to Docker container
+# Copy startup script and expect script from host to Docker container
 COPY startup-script.sh /startup-script.sh
+COPY expect_chia_keys_generate.exp /expect_chia_keys_generate.exp
+
+# Set execute permissions
 RUN chmod +x /startup-script.sh
+RUN chmod +x /expect_chia_keys_generate.exp
+
 
 # Expose CADT port
 EXPOSE 31310

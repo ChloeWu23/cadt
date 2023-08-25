@@ -28,7 +28,7 @@ stages:
                 repository: "cadt-api-develop" # Giving Name to the Repository
                 command: "buildAndPush"
                 Dockerfile: "$(System.DefaultWorkingDirectory)/Dockerfile"
-                tags: 1.0.0
+                tags: 1.0.1
 
   - stage: Deploydev
     displayName: Deploy Dev Application
