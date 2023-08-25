@@ -57,10 +57,11 @@ stages:
                 namespace: "develop"
                 command: "upgrade"
                 chartType: "FilePath"
-                chartPath: "cadt-api"
+                chartPath: "cadt-backend-helm"
                 chartVersion: "1.0"
                 releaseName: "cadt-api-develop"
-                valueFile: "cadt/values.yaml"
+                valueFile: "cadt-backend-helm/values.yaml"
                 waitForExecution: true
-                arguments: --install
+                # arguments: --install
                 # arguments: "--set image.tag=$(code_version_out)_$(Build.BuildId)"
+            
