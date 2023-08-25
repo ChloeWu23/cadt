@@ -45,6 +45,8 @@ RUN curl -sL https://repo.chia.net/FD39E6D3.pubkey.asc | sudo gpg --dearmor -o /
     apt-get update && \
     apt-get install cadt
 
+# Copy the secure config into the image
+COPY config.yaml /root/.chia/mainnet/cadt/v1/config.yaml
 # Copy startup script and expect script from host to Docker container
 COPY startup-script.sh /startup-script.sh
 COPY expect_chia_keys_generate.exp /expect_chia_keys_generate.exp
