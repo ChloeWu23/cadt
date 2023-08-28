@@ -52,8 +52,8 @@ stages:
     jobs:
         - job: Deploy
           # condition: eq(variables['Build.SourceBranchName'],variables['developBranchName'])
-          # variables:
-          #   - name: code_version_out
+          variables:
+            - name: code_version_out
           #     value: $[ stageDependencies.Builddev.Buildjob.outputs['ADO_variables.code_version_out'] ]
           displayName: Deploy Application in Cluster
           steps:
