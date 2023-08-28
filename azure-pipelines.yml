@@ -29,7 +29,15 @@ stages:
             - script: cp $(secureConfig.secureFilePath) ./config.yaml
               displayName: 'Copy secure config to current directory'
             
-            
+            - task: Bash@3
+              inputs:
+                targetType: 'inline'
+                script: |
+                  ls 
+                  pwd
+                  cd /
+                  pwd
+                  ls
 
             - task: Docker@2 # Pushing the Docker Image inside the Container Registry
               inputs:
