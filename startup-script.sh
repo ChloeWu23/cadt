@@ -45,4 +45,4 @@ sleep 60
 
 # Run Chia services
 echo "Running CADT"
-/opt/cadt/cadt
+#/opt/cadt/cadt
