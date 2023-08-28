@@ -39,9 +39,20 @@ echo "Starting Chia services"
 chia start node wallet data
 
 
+#get wallet address
+echo "Chia wallet address"
+chia wallet get_address
+
 # Allow some time for the services to start up
-echo "Sleeping for 60 seconds"
-sleep 60
+echo "Sleeping for 300 seconds(5 minutes)"
+sleep 300
+
+#check wallet and blockchian sysnced or not
+echo "Show blockchain syncing status"
+chia show -s
+
+echo "Show wallet syncing status"
+chia wallet show
 
 # Run Chia services
 echo "Running CADT"
