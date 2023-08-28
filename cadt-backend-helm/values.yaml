@@ -39,7 +39,7 @@ securityContext: {}
 
 service:
   type: LoadBalancer
-  port: 31313
+  port: 31310
 
 ingress:
   enabled: false
