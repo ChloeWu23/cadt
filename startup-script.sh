@@ -40,8 +40,8 @@ chia start node wallet data
 
 
 #get wallet address
-echo "Chia wallet address"
-chia wallet get_address
+#echo "Chia wallet address"
+#chia wallet get_address
 
 # Allow some time for the services to start up
 echo "Sleeping for 60 seconds"
