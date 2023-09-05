@@ -38,6 +38,7 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
+  nameOverride: ""
   type: LoadBalancer
   port: 31310
 
@@ -80,8 +81,8 @@ resources: {}
   #   memory: 128Mi
 
 autoscaling:
-  enabled: true
-  minReplicas: 2
+  enabled: false
+  minReplicas: 1
   maxReplicas: 10
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
