@@ -53,7 +53,7 @@ stages:
     displayName: Deploy Dev Application
     jobs:
         - job: DeployInstance1
-          displayName: Deploy Instance 1
+          #displayName: Deploy Instance 1
           # condition: eq(variables['Build.SourceBranchName'],variables['developBranchName'])
           variables:
             - name: code_version_out
@@ -87,7 +87,7 @@ stages:
                 # arguments: --install
                 arguments: "--set image.tag=$(code_version_out)_$(Build.BuildId) --set serviceName=$(service_name_override)"
         - job: DeployInstance2
-          displayName: Deploy Instance 2
+          #displayName: Deploy Instance 2
           # condition: eq(variables['Build.SourceBranchName'],variables['developBranchName'])
           variables:
             - name: code_version_out
