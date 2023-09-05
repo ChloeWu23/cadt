@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.service.nameOverride | default (include "cadt-backend-helm.fullname" .) }}
+  name: {{ include "cadt-backend-helm.fullname" . }}
   labels:
     {{- include "cadt-backend-helm.labels" . | nindent 4 }}
 spec:
