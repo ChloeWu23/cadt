@@ -58,7 +58,7 @@ stages:
           variables:
             - name: code_version_out
               value: $[ stageDependencies.Builddev.Buildjob.outputs['ADO_variables.code_version_out'] ]
-            - name: service_name_override  # Add this line
+            #- name: service_name_override  # Add this line
               value: "cadt-api-service-instance1"  # You can customize this value
           displayName: Deploy Application in Cluster
           steps:
@@ -85,41 +85,42 @@ stages:
                 valueFile: "cadt-backend-helm/values.yaml"
                 waitForExecution: true
                 # arguments: --install
-                arguments: "--set image.tag=$(code_version_out)_$(Build.BuildId) --set serviceName=$(service_name_override)"
-        - job: DeployInstance2
+                #arguments: "--set image.tag=$(code_version_out)_$(Build.BuildId) --set serviceName=$(service_name_override)"
+                arguments: "--set image.tag=$(code_version_out)_$(Build.BuildId)
+        #- job: DeployInstance2
           #displayName: Deploy Instance 2
           # condition: eq(variables['Build.SourceBranchName'],variables['developBranchName'])
-          variables:
-            - name: code_version_out
-              value: $[ stageDependencies.Builddev.Buildjob.outputs['ADO_variables.code_version_out'] ]
-            - name: service_name_override  # Add this line
-              value: "cadt-api-service-instance2"  # You can customize this value
-          displayName: Deploy Application in Cluster
-          steps:
+          #variables:
+            #- name: code_version_out
+              #value: $[ stageDependencies.Builddev.Buildjob.outputs['ADO_variables.code_version_out'] ]
+            #- name: service_name_override  # Add this line
+              #value: "cadt-api-service-instance2"  # You can customize this value
+          #displayName: Deploy Application in Cluster
+          #steps:
             # - checkout: Helmchart
-            - task: Bash@3
-              inputs:
-                targetType: "inline"
-                script: "echo $(code_version_out)"
-            - task: HelmInstaller@0 # Installing Helm in the Client
-              inputs:
-                helmVersion: "3.9.0"
-                installKubectl: true
-            - task: HelmDeploy@0 # Deploying the k8s using Helm
-              inputs:
-                azureSubscription: "sandbox-cadt-dev-northeurope-rg-master"
-                azureResourceGroup: "sandbox-cadt-dev-northeurope-rg-master"
-                kubernetesCluster: "sandbox-cadt-aks-dev-master"
-                namespace: "develop"
-                command: "upgrade"
-                chartType: "FilePath"
-                chartPath: "cadt-backend-helm"
-                chartVersion: "1.0"
-                releaseName: "cadt-api-instance2"
-                valueFile: "cadt-backend-helm/values.yaml"
-                waitForExecution: true
+            #- task: Bash@3
+              #inputs:
+                #targetType: "inline"
+                #script: "echo $(code_version_out)"
+            #- task: HelmInstaller@0 # Installing Helm in the Client
+              #inputs:
+                #helmVersion: "3.9.0"
+                #installKubectl: true
+            #- task: HelmDeploy@0 # Deploying the k8s using Helm
+              #inputs:
+                #azureSubscription: "sandbox-cadt-dev-northeurope-rg-master"
+                #azureResourceGroup: "sandbox-cadt-dev-northeurope-rg-master"
+                #kubernetesCluster: "sandbox-cadt-aks-dev-master"
+                #namespace: "develop"
+                #command: "upgrade"
+                #chartType: "FilePath"
+                #chartPath: "cadt-backend-helm"
+                #chartVersion: "1.0"
+                #releaseName: "cadt-api-instance2"
+                #valueFile: "cadt-backend-helm/values.yaml"
+                #waitForExecution: true
                 # arguments: --install
-                arguments: "--set image.tag=$(code_version_out)_$(Build.BuildId) --set serviceName=$(service_name_override)"
+                #arguments: "--set image.tag=$(code_version_out)_$(Build.BuildId) --set serviceName=$(service_name_override)"
          
 
             
