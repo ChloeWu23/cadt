@@ -59,7 +59,7 @@ stages:
             - name: code_version_out
               value: $[ stageDependencies.Builddev.Buildjob.outputs['ADO_variables.code_version_out'] ]
             #- name: service_name_override  # Add this line
-              value: "cadt-api-service-instance1"  # You can customize this value
+              #value: "cadt-api-service-instance1"  # You can customize this value
           displayName: Deploy Application in Cluster
           steps:
             # - checkout: Helmchart
@@ -86,7 +86,7 @@ stages:
                 waitForExecution: true
                 # arguments: --install
                 #arguments: "--set image.tag=$(code_version_out)_$(Build.BuildId) --set serviceName=$(service_name_override)"
-                arguments: "--set image.tag=$(code_version_out)_$(Build.BuildId)
+                arguments: "--set image.tag=$(code_version_out)_$(Build.BuildId)"
         #- job: DeployInstance2
           #displayName: Deploy Instance 2
           # condition: eq(variables['Build.SourceBranchName'],variables['developBranchName'])
