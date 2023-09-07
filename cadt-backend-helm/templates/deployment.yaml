@@ -49,8 +49,8 @@ spec:
           #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- with .Values.volumeMounts }}
-          volumeMounts:
+          {{- with .Values.persistentVolumeClaim }}
+          persistentVolumeClaim:
             {{- toYaml . | nindent 12 }}
           {{- end }}
       {{- with .Values.nodeSelector }}
@@ -65,7 +65,7 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.volumes }}
-      volumes:
+      {{- with .Values.persistentVolume }}
+      persistentVolume:
         {{- toYaml . | nindent 8 }}
       {{- end }}

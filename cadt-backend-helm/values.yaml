@@ -9,7 +9,7 @@ image:
   name: cadt-api-develop #imagename
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.0.1"
+  tag: "1.6.5_4232"
 
 
 imagePullSecrets: []
@@ -89,7 +89,7 @@ autoscaling:
   # targetMemoryUtilizationPercentage: 80
 
 vpa:
-  enabled: true
+  enabled: false
   updateMode: "Auto"
 
 
@@ -98,7 +98,7 @@ persistentVolume:
   name: fileshare-pv
   capacity: 10Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   reclaimPolicy: Retain
   azureFile:
     secretName: azure-fileshare-secret
@@ -109,9 +109,9 @@ persistentVolumeClaim:
   enabled: true
   name: fileshare-pvc
   namespace: develop
-  storageClassName: ""
+  storageClassName: "sandboxsadevcadt"
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   requests:
     storage: 10Gi
   selector:

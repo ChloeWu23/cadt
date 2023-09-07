@@ -16,3 +16,20 @@ spec:
     shareName: {{ .Values.persistentVolume.azureFile.shareName }}
     readOnly: {{ .Values.persistentVolume.azureFile.readOnly }}
 {{- end }}
+
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: fileshare-pv
+#   labels:
+#     usage: fileshare-pv
+# spec:
+#   capacity:
+#     storage: 10Gi
+#   accessModes:
+#     - ReadWriteMany
+#   persistentVolumeReclaimPolicy: Retain
+#   azureFile:
+#     secretName: azure-fileshare-secret
+#     shareName: sandboxcadtpsa
+#     readOnly: false

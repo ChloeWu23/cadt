@@ -14,3 +14,20 @@ spec:
     matchLabels:
       usage: fileshare-pv
 {{- end }}
+
+# kind: PersistentVolumeClaim
+# apiVersion: v1
+# metadata:
+#   name: fileshare-pvc
+#   namespace: develop
+#   annotations:
+#     volume.beta.kubernetes.io/storage-class: "sandboxsadevcadt"
+# spec:
+#   accessModes:
+#     - ReadWriteMany
+#   resources:
+#     requests:
+#       storage: 10Gi
+#   selector:
+#     matchLabels:
+#       usage: fileshare-pv
