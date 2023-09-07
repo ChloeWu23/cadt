@@ -98,8 +98,7 @@ persistentVolume:
   name: fileshare-pv
   capacity: 10Gi
   accessModes:
-    - ReadWriteOnce
-    - ReadOnlyMany
+    - ReadWriteMany
   reclaimPolicy: Retain
   azureFile:
     secretName: azure-fileshare-secret
