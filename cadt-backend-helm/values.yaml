@@ -93,6 +93,32 @@ vpa:
   updateMode: "Auto"
 
 
+persistentVolume:
+  enabled: true
+  name: fileshare-pv
+  capacity: 10Gi
+  accessModes:
+    - ReadWriteMany
+  reclaimPolicy: Retain
+  azureFile:
+    secretName: azure-fileshare-secret
+    shareName: sandboxcadtpsa
+    readOnly: false
+
+persistentVolumeClaim:
+  enabled: true
+  name: fileshare-pvc
+  namespace: develop
+  storageClassName: ""
+  accessModes:
+    - ReadWriteMany
+  requests:
+    storage: 10Gi
+  selector:
+    matchLabels:
+      usage: fileshare-pv
+
+
 nodeSelector: {}
 
 tolerations: []

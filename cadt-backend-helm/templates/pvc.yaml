@@ -1,0 +1,16 @@
+{{- if .Values.persistentVolumeClaim.enabled }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ .Values.persistentVolumeClaim.name }}
+  namespace: {{ .Values.persistentVolumeClaim.namespace }}
+spec:
+  accessModes:
+    - {{ .Values.persistentVolumeClaim.accessModes }}
+  resources:
+    requests:
+      storage: {{ .Values.persistentVolumeClaim.requests.storage }}
+  selector:
+    matchLabels:
+      usage: fileshare-pv
+{{- end }}
