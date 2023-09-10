@@ -51,7 +51,10 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           #{{- with .Values.persistentVolumeClaim }}
-
+          
+          volumeMounts:  # <----- ADD THIS BLOCK
+          - name: fileshare-volume
+            mountPath: /root/.chia/mainnet/db  # <--- Update this path
 
 
           #persistentVolumeClaim:
