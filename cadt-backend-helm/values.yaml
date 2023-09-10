@@ -109,7 +109,8 @@ persistentVolumeClaim:
   enabled: true
   name: fileshare-pvc
   namespace: develop
-  storageClassName: "sandboxsadevcadt"
+  #storageClassName: "sandboxsadevcadt"
+  storageClassName: "azurefile"  # Update this
   accessModes:
     - ReadWriteOnce
   requests:
