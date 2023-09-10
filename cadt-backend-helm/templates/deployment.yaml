@@ -4,7 +4,6 @@ metadata:
   name: {{ include "cadt-backend-helm.fullname" . }}
   labels:
     {{- include "cadt-backend-helm.labels" . | nindent 4 }}
-
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
@@ -32,42 +31,22 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-            #need to update here: Values.image.registry refers to ui docker image
           image: {{ .Values.image.registry }}/{{ .Values.image.name }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
-          # livenessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
-          # readinessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          #{{- with .Values.persistentVolumeClaim }}
-          
-          volumeMounts:  # <----- ADD THIS BLOCK
-          - name: fileshare-volume
-            mountPath: /root/.chia/mainnet/db  # <--- Update this path
-
-
-          #persistentVolumeClaim:
-            #{{- toYaml . | nindent 12 }}
-          #{{- end }}
-      #{{- with .Values.nodeSelector }}
-      
+          volumeMounts:
+            - name: fileshare-volume
+              mountPath: /root/.chia/mainnet/db
       volumes:
         - name: fileshare-volume
           persistentVolumeClaim:
             claimName: {{ .Values.persistentVolumeClaim.name }}
       {{- with .Values.nodeSelector }}
-
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
@@ -79,7 +58,4 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      #{{- with .Values.persistentVolume }}
-      #persistentVolume:
-        #{{- toYaml . | nindent 8 }}
-      #{{- end }}
+
