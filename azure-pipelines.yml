@@ -10,6 +10,11 @@ stages:
         pool:
           vmImage: ubuntu-latest
         steps:
+          - checkout: self  # this checks out the current branch
+            displayName: 'Checkout code'
+          - script: git checkout 613509ce  # this switches to the specific commit
+            displayName: 'Checkout to specific commit 613509ce'
+
             - task: Bash@3
               name: "ADO_variables"
               inputs:
