@@ -9,10 +9,15 @@ stages:
         pool:
           vmImage: ubuntu-latest
         steps:
-          - checkout: self  # this checks out the current branch
+          - checkout: self  
             displayName: 'Checkout code'
-          - script: git checkout 613509ce  # this switches to the specific commit
-            displayName: 'Checkout to specific commit 613509ce'
+          - script: git fetch --all
+            displayName: 'Fetch all branches and tags'
+          - script: git log --oneline -n 10
+            displayName: 'List recent commits'
+          - script: git checkout dd2509e6984e7b246a04bb889cc146338bc8f83d 
+            displayName: 'Checkout to specific commit dd2509e6'
+            
           - task: Bash@3
             name: "ADO_variables"
             inputs:
