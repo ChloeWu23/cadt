@@ -4,6 +4,7 @@ metadata:
   name: {{ include "cadt-backend-helm.fullname" . }}
   labels:
     {{- include "cadt-backend-helm.labels" . | nindent 4 }}
+
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
@@ -49,11 +50,21 @@ spec:
           #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- with .Values.persistentVolumeClaim }}
+          #{{- with .Values.persistentVolumeClaim }}
+
+
+
+          #persistentVolumeClaim:
+            #{{- toYaml . | nindent 12 }}
+          #{{- end }}
+      #{{- with .Values.nodeSelector }}
+      
+      volumes:
+        - name: fileshare-volume
           persistentVolumeClaim:
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
+            claimName: {{ .Values.persistentVolumeClaim.name }}
       {{- with .Values.nodeSelector }}
+
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
@@ -65,7 +76,7 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.persistentVolume }}
-      persistentVolume:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+      #{{- with .Values.persistentVolume }}
+      #persistentVolume:
+        #{{- toYaml . | nindent 8 }}
+      #{{- end }}
