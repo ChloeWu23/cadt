@@ -1,0 +1,68 @@
+{
+  "info": {
+    "_postman_id": "f1a86e8f-072c-40b7-8155-2cc798be1501",
+    "name": "Audit API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "find_all_records",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{default}}/v1/audit?page=1&limit=10&order=ASC&orgUid=3c1865c752a3a965a7ac7292d3cd3e7079ad406040785bcd614f63251e0a1fa4",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "31310",
+          "path": [
+            "v1",
+            "audit"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            },
+            {
+              "key": "order",
+              "value": "ASC"
+            },
+            {
+              "key": "orgUid",
+              "value": "3c1865c752a3a965a7ac7292d3cd3e7079ad406040785bcd614f63251e0a1fa4"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "find_all_conflicts",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{default}}/v1/audit/findConflicts",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "31310",
+          "path": [
+            "v1",
+            "audit",
+            "findConflicts"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

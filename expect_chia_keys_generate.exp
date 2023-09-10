@@ -1,0 +1,18 @@
+#!/usr/bin/expect -f
+
+set timeout -1
+
+# Activate environment
+spawn /bin/bash -c "source /chia-blockchain/activate"
+
+# Run command
+spawn chia keys generate
+
+# Look for the prompt
+expect "Enter the label you want to assign to this key (Press Enter to skip):"
+
+# Provide your input (here, just an Enter key to skip)
+send "\r"
+
+# Wait for the command to finish
+expect eof

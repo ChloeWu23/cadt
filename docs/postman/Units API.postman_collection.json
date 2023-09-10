@@ -1,0 +1,196 @@
+{
+  "info": {
+    "_postman_id": "ab50ecc7-b12b-4612-a9b6-89383a9842ab",
+    "name": "Units API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "create_unit",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"countryJurisdictionOfOwner\": \"Algeria\",\r\n    \"unitCount\": \"100\",\r\n    \"unitBlockEnd\": \"ABC200\",\r\n    \"unitBlockStart\": \"ABC100\",\r\n    \"vintageYear\": 2022,\r\n    \"unitRegistryLink\": \"http://example.example\",\r\n    \"unitType\": \"Reduction - nature\",\r\n    \"unitStatus\": \"Held\",\r\n    \"correspondingAdjustmentDeclaration\": \"Committed\",\r\n    \"correspondingAdjustmentStatus\": \"Not Started\",\r\n    \"issuance\": {\r\n        \"endDate\": \"2022-08-05T00:00:00.000Z\",\r\n        \"startDate\": \"2022-08-03T00:00:00.000Z\",\r\n        \"verificationApproach\": \"seer\",\r\n        \"verificationBody\": \"tea\",\r\n        \"verificationReportDate\": \"2022-08-06T00:00:00.000Z\",\r\n        \"id\": \"4ca8bc17-6822-4641-aa85-a7dcff4bdb40\",\r\n        \"warehouseProjectId\": \"4ee32c83-15ca-4c9a-a0dc-d4605e0bbae0\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{default}}/v1/units",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "31310",
+          "path": [
+            "v1",
+            "units"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "find_all_units",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{default}}/v1/units",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "31310",
+          "path": [
+            "v1",
+            "units"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "find_one_unit",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{default}}/v1/units?warehouseUnitId=9ae325b7-09c2-4a1c-98db-23b76e831776",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "31310",
+          "path": [
+            "v1",
+            "units"
+          ],
+          "query": [
+            {
+              "key": "warehouseUnitId",
+              "value": "9ae325b7-09c2-4a1c-98db-23b76e831776"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "upload_units_from_xls",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "xlsl",
+              "value": "",
+              "type": "default"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{default}}/v1/units/xlsx",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "31310",
+          "path": [
+            "v1",
+            "units",
+            "xlsx"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update_unit",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"warehouseUnitId\": \"9ae325b7-09c2-4a1c-98db-23b76e831776\",\r\n    \"countryJurisdictionOfOwner\": \"Algeria\",\r\n    \"unitCount\": \"100\",\r\n    \"unitBlockEnd\": \"ABC200\",\r\n    \"unitBlockStart\": \"ABC100\",\r\n    \"vintageYear\": 2022,\r\n    \"unitRegistryLink\": \"http://example.example\",\r\n    \"unitType\": \"Reduction - nature\",\r\n    \"unitStatus\": \"Held\",\r\n    \"correspondingAdjustmentDeclaration\": \"Committed\",\r\n    \"correspondingAdjustmentStatus\": \"Not Started\",\r\n    \"issuance\": {\r\n        \"endDate\": \"2022-08-05T00:00:00.000Z\",\r\n        \"startDate\": \"2022-08-03T00:00:00.000Z\",\r\n        \"verificationApproach\": \"seer\",\r\n        \"verificationBody\": \"tea\",\r\n        \"verificationReportDate\": \"2022-08-06T00:00:00.000Z\",\r\n        \"id\": \"4ca8bc17-6822-4641-aa85-a7dcff4bdb40\",\r\n        \"warehouseProjectId\": \"4ee32c83-15ca-4c9a-a0dc-d4605e0bbae0\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{default}}/v1/units",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "31310",
+          "path": [
+            "v1",
+            "units"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete_unit",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"warehouseUnitId\": \"9ae325b7-09c2-4a1c-98db-23b76e831776\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{default}}/v1/units",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "31310",
+          "path": [
+            "v1",
+            "units"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "split_units",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"warehouseUnitId\": \"9ae325b7-09c2-4a1c-98db-23b76e831776\",\r\n   \"records\": [{\r\n       \"unitBlockStart\": \"ABC1\",\r\n       \"unitBlockEnd\": \"ABC10\",\r\n       \"unitCount\": 6\r\n   }, {\r\n          \"unitBlockStart\": \"ABC1\",\r\n       \"unitBlockEnd\": \"ABC10\",\r\n        \"unitCount\": 3\r\n   }, {\r\n          \"unitBlockStart\": \"ABC1\",\r\n       \"unitBlockEnd\": \"ABC10\",\r\n       \"unitCount\": 1\r\n   }]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": []
+    }
+  ]
+}

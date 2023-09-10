@@ -1,0 +1,40 @@
+import Joi from 'joi';
+
+export const newOrganizationSchema = Joi.object({
+  name: Joi.string().required(),
+  icon: Joi.string().optional(),
+});
+
+export const importOrganizationSchema = Joi.object({
+  orgUid: Joi.string().required(),
+});
+
+export const importHomeOrganizationSchema = Joi.object({
+  orgUid: Joi.string().required(),
+});
+
+export const unsubscribeOrganizationSchema = Joi.object({
+  orgUid: Joi.string().required(),
+});
+
+export const subscribeOrganizationSchema = Joi.object({
+  orgUid: Joi.string().required(),
+});
+
+export const resyncOrganizationSchema = Joi.object({
+  orgUid: Joi.string().required(),
+});
+
+export const removeMirrorSchema = Joi.object({
+  orgUid: Joi.string().required(),
+  storeId: Joi.string().required(),
+});
+
+export const addMirrorSchema = Joi.object({
+  storeId: Joi.string().required(),
+  url: Joi.string().required(),
+});
+
+export const getMetaDataSchema = Joi.object({
+  orgUid: Joi.string().required(),
+});

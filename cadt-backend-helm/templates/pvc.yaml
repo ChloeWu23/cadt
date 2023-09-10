@@ -1,0 +1,33 @@
+{{- if .Values.persistentVolumeClaim.enabled }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ .Values.persistentVolumeClaim.name }}
+  namespace: {{ .Values.persistentVolumeClaim.namespace }}
+spec:
+  accessModes:
+    - {{ .Values.persistentVolumeClaim.accessModes }}
+  resources:
+    requests:
+      storage: {{ .Values.persistentVolumeClaim.requests.storage }}
+  selector:
+    matchLabels:
+      usage: fileshare-pv
+{{- end }}
+
+# kind: PersistentVolumeClaim
+# apiVersion: v1
+# metadata:
+#   name: fileshare-pvc
+#   namespace: develop
+#   annotations:
+#     volume.beta.kubernetes.io/storage-class: "sandboxsadevcadt"
+# spec:
+#   accessModes:
+#     - ReadWriteMany
+#   resources:
+#     requests:
+#       storage: 10Gi
+#   selector:
+#     matchLabels:
+#       usage: fileshare-pv

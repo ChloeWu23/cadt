@@ -1,0 +1,16 @@
+{
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 13,
+    "sourceType": "module"
+  },
+  "rules": {
+    "es/no-dynamic-import": "error"
+  },
+  "plugins": ["mocha", "es"],
+  "extends": ["eslint:recommended", "plugin:mocha/recommended"]
+}
