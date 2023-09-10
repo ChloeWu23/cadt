@@ -11,10 +11,10 @@ stages:
         steps:
           - checkout: self  
             displayName: 'Checkout code'
-          - script: git fetch --all
-            displayName: 'Fetch all branches and tags'
-          - script: git log --oneline -n 10
-            displayName: 'List recent commits'
+          #- script: git fetch --all
+            #displayName: 'Fetch all branches and tags'
+          #- script: git log --oneline -n 10
+            #displayName: 'List recent commits'
           - script: git checkout dd2509e6984e7b246a04bb889cc146338bc8f83d 
             displayName: 'Checkout to specific commit dd2509e6'
             
