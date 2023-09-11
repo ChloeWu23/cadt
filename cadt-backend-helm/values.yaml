@@ -89,12 +89,12 @@ autoscaling:
   # targetMemoryUtilizationPercentage: 80
 
 vpa:
-  enabled: false
+  enabled: true
   updateMode: "Auto"
 
 
 persistentVolume:
-  enabled: true
+  enabled: false 
   name: fileshare-pv
   capacity: 10Gi
   accessModes:
@@ -106,7 +106,7 @@ persistentVolume:
     readOnly: false
 
 persistentVolumeClaim:
-  enabled: true
+  enabled: false
   name: fileshare-pvc
   namespace: develop
   #storageClassName: "sandboxsadevcadt"

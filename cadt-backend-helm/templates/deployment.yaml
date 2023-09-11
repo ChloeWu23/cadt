@@ -39,13 +39,6 @@ spec:
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          volumeMounts:
-            - name: fileshare-volume
-              mountPath: /root/.chia/mainnet/db
-      volumes:
-        - name: fileshare-volume
-          persistentVolumeClaim:
-            claimName: {{ .Values.persistentVolumeClaim.name }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
