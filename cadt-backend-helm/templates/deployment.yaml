@@ -27,32 +27,25 @@ spec:
       serviceAccountName: {{ include "cadt-backend-helm.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+        - name: {{ .Release.Name }}-volume
+          persistentVolumeClaim:
+            claimName: fileshare-pvc 
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-            #need to update here: Values.image.registry refers to ui docker image
           image: {{ .Values.image.registry }}/{{ .Values.image.name }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          
+          volumeMounts:
+            - name: {{ .Release.Name }}-volume
+              mountPath: root/.chia/mainnet/db
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
-          # livenessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
-          # readinessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- with .Values.persistentVolumeClaim }}
-          persistentVolumeClaim:
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -63,9 +56,5 @@ spec:
       {{- end }}
       {{- with .Values.tolerations }}
       tolerations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.persistentVolume }}
-      persistentVolume:
         {{- toYaml . | nindent 8 }}
       {{- end }}
