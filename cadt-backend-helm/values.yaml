@@ -89,12 +89,12 @@ autoscaling:
   # targetMemoryUtilizationPercentage: 80
 
 vpa:
-  enabled: false
+  enabled: true
   updateMode: "Auto"
 
 
 persistentVolume:
-  enabled: false
+  enabled: false 
   name: fileshare-pv
   capacity: 10Gi
   accessModes:
@@ -109,7 +109,8 @@ persistentVolumeClaim:
   enabled: false
   name: fileshare-pvc
   namespace: develop
-  storageClassName: "sandboxsadevcadt"
+  #storageClassName: "sandboxsadevcadt"
+  storageClassName: "azurefile"  # Update this
   accessModes:
     - ReadWriteOnce
   requests:

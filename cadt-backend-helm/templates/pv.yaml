@@ -8,8 +8,10 @@ metadata:
 spec:
   capacity:
     storage: {{ .Values.persistentVolume.capacity }}
-  accessModes:
-    - {{ .Values.persistentVolume.accessModes }}
+  #accessModes:
+    #- {{ .Values.persistentVolume.accessModes }}
+  accessModes: {{ toYaml .Values.persistentVolume.accessModes | nindent 4 }}
+
   persistentVolumeReclaimPolicy: {{ .Values.persistentVolume.reclaimPolicy }}
   azureFile:
     secretName: {{ .Values.persistentVolume.azureFile.secretName }}

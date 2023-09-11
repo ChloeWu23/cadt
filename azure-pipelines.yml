@@ -86,7 +86,8 @@ stages:
                 waitForExecution: true
                 # arguments: --install
                 #arguments: "--set image.tag=$(code_version_out)_$(Build.BuildId) --set serviceName=$(service_name_override)"
-                arguments: "--set image.tag=$(code_version_out)_$(Build.BuildId)"
+                #arguments: "--set image.tag=$(code_version_out)_$(Build.BuildId)"
+                arguments: "--set image.tag=$(code_version_out)_$(Build.BuildId)" # --set persistentVolumeClaim.storageClassName=azurefile"
         #- job: DeployInstance2
           #displayName: Deploy Instance 2
           # condition: eq(variables['Build.SourceBranchName'],variables['developBranchName'])
