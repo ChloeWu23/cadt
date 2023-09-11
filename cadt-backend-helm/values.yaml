@@ -100,7 +100,7 @@ persistentVolume:
     - ReadWriteMany
   reclaimPolicy: Retain
   azureFile:
-    secretName: azure-secret
+    secretName: azure-fileshare-secret
     shareName: sandboxcadtpsa
     readOnly: false
 
