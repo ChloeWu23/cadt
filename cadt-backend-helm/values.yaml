@@ -92,13 +92,12 @@ vpa:
   enabled: true
   updateMode: "Auto"
 
-
 persistentVolume:
-  enabled: false 
+  enabled: true
   name: fileshare-pv
   capacity: 10Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   reclaimPolicy: Retain
   azureFile:
     secretName: azure-fileshare-secret
@@ -106,19 +105,17 @@ persistentVolume:
     readOnly: false
 
 persistentVolumeClaim:
-  enabled: false
+  enabled: true
   name: fileshare-pvc
-  namespace: develop
-  #storageClassName: "sandboxsadevcadt"
-  storageClassName: "azurefile"  # Update this
-  accessModes:
-    - ReadWriteOnce
+  # namespace: cadt
+  storageClassName: "sandboxsadevcadt"
+  accessModes: 
+    - ReadWriteMany
   requests:
     storage: 10Gi
   selector:
     matchLabels:
       usage: fileshare-pv
-
 
 nodeSelector: {}
 
