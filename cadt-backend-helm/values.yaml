@@ -95,7 +95,7 @@ vpa:
 persistentVolume:
   enabled: true
   name: fileshare-pv
-  capacity: 200Gi
+  capacity: 10Gi
   accessModes:
     - ReadWriteMany
   reclaimPolicy: Retain
