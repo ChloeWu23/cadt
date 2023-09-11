@@ -94,7 +94,7 @@ vpa:
 
 
 persistentVolume:
-  enabled: true
+  enabled: false
   name: fileshare-pv
   capacity: 10Gi
   accessModes:
@@ -106,7 +106,7 @@ persistentVolume:
     readOnly: false
 
 persistentVolumeClaim:
-  enabled: true
+  enabled: false
   name: fileshare-pvc
   namespace: develop
   storageClassName: "sandboxsadevcadt"
