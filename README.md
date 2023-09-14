@@ -245,3 +245,36 @@ More info: https://www.sqlite.org/fts5.html
    1. Once subscribed, emit either emit ...['subscribe', 'units'] or ['subscribe', 'projects']. You can emit both on the same connection
 2. You will receive frames that look like ...[change:units, {orgUid: '123'}], letting you know that there has been an update to a record
    Coll
+
+## Docker:
+Dockerfile is `Dockerfile` with script `startup-script.sh`
+
+## Helm Chart:
+Under Folder cadt-backend-helm is the helm yaml film for CADT backend deployment on backend:
+
+Registry Name: `sandboxcadtACRdev`
+
+Image Name: `adt-api-develop`
+
+Sservice Name: `cadt-api-develop-cadt-backend-helm`
+
+storageClassName: `sandboxsadevcadt`
+
+
+## Azure pipeline:
+pipeline file: `azure-pipelines.yml`
+
+Run pipeline under Azure Dev Op; this application need security file which under the pipeline library with name `config.yaml`
+
+To run the pipeline, need add service connection under setting -> service connection -> add service connection :
+
+1. Docker registry connection: `sandboxcadtACRdev`
+
+2. Azure Resource Manager Connection `sandbox-cadt-dev-northeurope-rg-master`
+
+
+
+
+
+
+
