@@ -1,4 +1,37 @@
-# Climate Action Data Trust
+# Automation of CADT(CLimate Action Data Trust) Sandboxes
+This Project aims to provide a sandox testing enviroment for CADT, which is [Climate Action Data Trust](https://github.com/Chia-Network/cadt). It provide Dockerfile for CADT API and use helm chart to deploy this backend on a deployed Kubernetes Cluster named `sandbox-cadt-aks-dev-master` in Azure Enviroment. Details about sandbox kubernete cluster deployment can visit [sandbox_infraustructure](https://github.com/ChloeWu23/sandbox_infrastructure)
+
+Note that except `cadt-backedn-helmfolder`; `Dockerfile`; `startup-script.sh`; `azure-pipelines.yml`, all the other files are folked from [Climate Action Data Trust](https://github.com/Chia-Network/cadt).
+
+## Docker:
+Dockerfile is `Dockerfile` with script `startup-script.sh`
+
+## Helm Chart:
+Under Folder cadt-backend-helm is the helm yaml film for CADT backend deployment on backend:
+
+Registry Name: `sandboxcadtACRdev`
+
+Image Name: `adt-api-develop`
+
+Sservice Name: `cadt-api-develop-cadt-backend-helm`
+
+storageClassName: `sandboxsadevcadt`
+
+
+## Azure pipeline:
+pipeline file: `azure-pipelines.yml`
+
+Run pipeline under Azure Dev Op; this application need security file which under the pipeline library with name `config.yaml`
+
+To run the pipeline, need add service connection under setting -> service connection -> add service connection :
+
+1. Docker registry connection: `sandboxcadtACRdev`
+
+2. Azure Resource Manager Connection `sandbox-cadt-dev-northeurope-rg-master`
+
+
+
+## Climate Action Data Trust
 
 ​This project provides the Climate Action Data Trust (CADT) API that integrates with the [Chia Blockchain](https://github.com/Chia-Network/chia-blockchain).  For a user interface, see the [CADT UI project](https://github.com/Chia-Network/climate-warehouse-ui) which will connect to the CADT API.
 
@@ -246,31 +279,7 @@ More info: https://www.sqlite.org/fts5.html
 2. You will receive frames that look like ...[change:units, {orgUid: '123'}], letting you know that there has been an update to a record
    Coll
 
-## Docker:
-Dockerfile is `Dockerfile` with script `startup-script.sh`
 
-## Helm Chart:
-Under Folder cadt-backend-helm is the helm yaml film for CADT backend deployment on backend:
-
-Registry Name: `sandboxcadtACRdev`
-
-Image Name: `adt-api-develop`
-
-Sservice Name: `cadt-api-develop-cadt-backend-helm`
-
-storageClassName: `sandboxsadevcadt`
-
-
-## Azure pipeline:
-pipeline file: `azure-pipelines.yml`
-
-Run pipeline under Azure Dev Op; this application need security file which under the pipeline library with name `config.yaml`
-
-To run the pipeline, need add service connection under setting -> service connection -> add service connection :
-
-1. Docker registry connection: `sandboxcadtACRdev`
-
-2. Azure Resource Manager Connection `sandbox-cadt-dev-northeurope-rg-master`
 
 
 
